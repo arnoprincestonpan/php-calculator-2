@@ -15,8 +15,24 @@
         $_SESSION["display"] = [];
     }
 
+    if(!isset($_SESSION["previous"])){
+        $_SESSION["previous"] = "";
+    }
+
     if(isset($_GET["btn-submit"])){
-        array_push($_SESSION["display"], $_GET["btn-submit"]);
+        if($_GET["btn-submit"] == "C"){
+            $display = "";
+            session_destroy();
+        }else if(!is_numeric($_GET["btn-submit"]) && !is_numeric($_SESSION["previous"])){
+            # do nothing
+        }else{
+            $_SESSION["previous"] = $_GET["btn-submit"];
+            array_push($_SESSION["display"], $_GET["btn-submit"]);
+        }
+
+        if(!isset($_SESSION['display'])){
+            $_SESSION["display"] = [];
+        }
         $display = implode("", $_SESSION["display"]);
     }
 ?>
@@ -39,7 +55,7 @@
             <?= $btns ?>
         </form>
         <div>
-            <?= $msg ?>
+            <?= implode("", $_SESSION["display"]) ?>
         </div>
     </div>
 </body>
