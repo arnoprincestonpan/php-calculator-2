@@ -1,20 +1,23 @@
 <?php
     $btnAll = ["C", "7", "8", "9", "&plus;", "=", "4", "5", "6", "&minus;", "E", "1", "2", "3", "&times;", ".", "0","&divide;"];
-    $btns = "<div class='btns'>";
-    $display = "Type as much stuff as possible to see what happens.";
+
+    $btns = "";
+    foreach($btnAll as $key => $value){
+        $btns .= "<input class='btns' type='submit' name='btn-submit' value='$value'  />";
+    }
 
     $msg = "<p>Nothing has been clicked.</p>";
+    $display = "";
 
-    foreach($btnAll as $key => $value){
-        if($key % 5 == 0){
-            $btns .= "</div><div class='btns'><input type='submit' name='btn-submit' value='$value'  />";
-            continue;
-        }
-        $btns .= "<input type='submit' name='btn-submit' value='$value'  />";
+    session_start();
+
+    if(!isset($_SESSION['display'])){
+        $_SESSION["display"] = [];
     }
 
     if(isset($_GET["btn-submit"])){
-        $msg .= "<p>Clicked</p>";
+        array_push($_SESSION["display"], $_GET["btn-submit"]);
+        $display = implode("", $_SESSION["display"]);
     }
 ?>
 
@@ -29,12 +32,12 @@
 </head>
 <body>
     <div id="container">
-        <form id="display-area" action="<?= $_SERVER['PHP_SELF']?>" method="get">
+        <div id="display-area">
             <?= $display ?>
-        </form>
-        <div id="btn-area">
-            <?= $btns ?>
         </div>
+        <form id="btn-area" action="<?= $_SERVER['PHP_SELF']?>" method="get" id="btn-area">
+            <?= $btns ?>
+        </form>
         <div>
             <?= $msg ?>
         </div>

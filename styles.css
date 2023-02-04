@@ -23,34 +23,17 @@ body{
     text-align: right;
 
     padding: 1rem;
-
-    width: 420px;
-    max-width: 450px;
 }
 
 #btn-area{
-    display: flex;
-    flex-direction: column;
 
     padding: 1rem;
     padding-top: 0rem;
 
     border: 1px solid orange;
 
-    width: 420px;
-}
+    align-content: center;
 
-.btns{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    padding: 1rem;
-    padding-top: 0rem;
-
-    border: 1px solid grey;
-}
-
-.btns > input{
-    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
