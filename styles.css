@@ -1,0 +1,56 @@
+:before:after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0rem;
+}
+
+#container{
+    margin: 1rem;
+    border: 3px solid red;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#display-area{
+    border: 1px solid blue;
+    background-color: black;
+    color: lightgreen;
+
+    text-align: right;
+
+    padding: 1rem;
+
+    width: 420px;
+    max-width: 450px;
+}
+
+#btn-area{
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+    padding-top: 0rem;
+
+    border: 1px solid orange;
+
+    width: 420px;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    padding: 1rem;
+    padding-top: 0rem;
+
+    border: 1px solid grey;
+}
+
+.btns > input{
+    padding: 2rem;
+}
